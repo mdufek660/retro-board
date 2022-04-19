@@ -1,0 +1,72 @@
+.Retro{
+	border-color: black;
+	border-style: solid;
+	border-width: 2px;
+	margin: 2%;
+	bakground-color: darkGreen;
+}
+
+.Title{
+	width: 100%;
+	border-color: black;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	border-bottom: dashed;
+	border-width: 1px;
+	margin-bottom: 5px;
+
+}
+
+.ButtonOverride{
+	height: 20px;
+	width: 20px;
+	padding: 0;
+	margin-top: 2px;
+}
+
+.EditButton{
+	float: right;
+	float: top;
+	margin-bottom: 1px;
+}
+
+.Image{
+	height: 100%;
+	width: 100%;
+}
+
+.Input{
+	width: 80%;
+}
+
+.AcceptButton{
+	float: top;
+}
+
+.Body{
+	width: 100%;
+}
+
+.Footer{
+	width: 100%;	
+	border-color: black;
+	border-left: none;
+	border-right: none;
+	border-top: dashed;
+	border-bottom: none;
+	border-width: 1px;
+	margin-top: 5px;
+}
+
+.SendLeft{
+	float: left;
+}
+
+.DeleteButton{
+	float: center;
+}
+
+.SendRight{
+	float: right;
+}

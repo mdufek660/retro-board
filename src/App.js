@@ -1,23 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import Category from "./components/Category/Category";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Category title="Went well" bgc="rgba(100,175,100,.5)"/>
+      <Category title="To Improve" bgc="rgba(175,100,100,.5)"/>
+      <Category title="Action Items" bgc="rgba(175,175,100,.5)"/>
     </div>
   );
 }
