@@ -2,7 +2,7 @@ import {useState} from "react"
 import "./Retrospective.css"
 
 function App({titleR="place holder", bgcR="rgba(1,1,1,1)", id=0, key=0, removeRetroR=null}){
-	const [text, setText]=useState("body");
+	const [text, setText]=useState("notes");
 	const [storageText, setStorageText]=useState();
 	const [editing, setEditing]=useState('none');
 
@@ -33,7 +33,7 @@ function App({titleR="place holder", bgcR="rgba(1,1,1,1)", id=0, key=0, removeRe
 	}
 
 	const editTitleButton = e =>{
-		if(editing=='none'){
+		if(editingTitle=='none'){
 			setEditingTitle('block')
 			setStorageTextTitle(titleText)
 		}
