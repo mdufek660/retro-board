@@ -48,7 +48,7 @@
 	width: 100%;
 }
 
-.Footer{
+.FooterRetro{
 	width: 100%;	
 	border-color: black;
 	border-left: none;
@@ -63,10 +63,16 @@
 	float: left;
 }
 
-.DeleteButton{
+.DeleteButtonRetro{
 	float: center;
 }
 
 .SendRight{
 	float: right;
+}
+
+.TextBox{
+	width: 100%;
+	max-width: 100%;
+	overflow-wrap: break-word;
 }

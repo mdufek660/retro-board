@@ -1,5 +1,4 @@
 .Container {
-	min-height: 400px;
 	border-color: black;
 	border-style: solid;
 	border-width: 2px;
@@ -50,4 +49,8 @@
 
 .ColorRow{
 	padding-top: 3px;
+}
+
+.DeleteButton{
+	float: left;
 }
