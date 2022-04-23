@@ -14,14 +14,14 @@ function App({title = "default", bgc="rgba(100,150,0,1)", column=0, widthIn="20%
 	const [bgColor, setBgColor]=useState(bgc)
 	const [retroTitle, setRetroTitle]=useState(title)
 	const [editingTitle, setEditingTitle]=useState('none')
-	const [titleStorage, setTitleStorage]=useState()
+	const [titleStorage, setTitleStorage]=useState("")
 
 	const [editingColor, setEditingColor]=useState('none')
 	const [redRGB, setRedRGB]=useState(0)
 	const [blueRGB, setBlueRGB]=useState(0)
 	const [greenRGB, setGreenRGB]=useState(0)
 
-	useEffect(()=>{childFunc.current=refHandler;}, [divList])
+	useEffect(()=>{childFunc.current=refHandler;}, [divList, bgColor, retroTitle])
 
 	const refHandler = (input) =>{
 		addExistingRetro(input);
@@ -65,6 +65,7 @@ function App({title = "default", bgc="rgba(100,150,0,1)", column=0, widthIn="20%
 	}
 
 	const acceptTitleButton = e =>{
+		if(titleStorage==""){alert("please enter a title!"); return}
 		setEditingTitle('none')
 		setRetroTitle(titleStorage)
 	}
@@ -153,7 +154,6 @@ function App({title = "default", bgc="rgba(100,150,0,1)", column=0, widthIn="20%
 			return <Retrospective  titleR={retro.titleR} bgcR={retro.bgcR} id={retro.rid} key={retro.key} bodyR={retro.bodyR}  
 			currentCat={retro.catId} removeRetroR={removeRetro} retroShifter={retroShift}/>
 		})}</div> 
-		{/*map*/}
 	</div></>
 }
 

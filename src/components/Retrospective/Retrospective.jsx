@@ -3,11 +3,11 @@ import "./Retrospective.css"
 
 function App({titleR="place holder", bodyR="notes", bgcR="rgba(1,1,1,1)", id=0, currentCat=0, removeRetroR=null, retroShifter=null}){
 	const [text, setText]=useState(bodyR);
-	const [storageText, setStorageText]=useState();
+	const [storageText, setStorageText]=useState("");
 	const [editing, setEditing]=useState('none');
 
 	const [titleText, setTitleText]=useState(titleR);
-	const [storageTextTitle, setStorageTextTitle]=useState();
+	const [storageTextTitle, setStorageTextTitle]=useState("");
 	const [editingTitle, setEditingTitle]=useState('none');
 
 	const [likes, setLikes]=useState();
@@ -29,6 +29,7 @@ function App({titleR="place holder", bodyR="notes", bgcR="rgba(1,1,1,1)", id=0, 
 
 	const acceptButton = e =>{
 		setText(storageText);
+		setStorageText("")
 		setEditing('none')
 	}
 
@@ -49,6 +50,7 @@ function App({titleR="place holder", bodyR="notes", bgcR="rgba(1,1,1,1)", id=0, 
 	const acceptTitleButton = e =>{
 		setEditingTitle('none')
 		setTitleText(storageTextTitle);
+		setStorageTextTitle("")
 	}
 
 	const deleteButtonHandler = () =>{
