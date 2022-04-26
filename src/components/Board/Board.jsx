@@ -9,6 +9,7 @@ function App(){
 	const [marginWidth, setMarginWidth] = useState("1%")
 	const [addedCategories, setAddedCategories] = useState([])
 	const [firstLoad, setFirstLoad]=useState(true)
+	const [filterOut, setFilterOut]=useState([])
 
 	useEffect(()=>{console.log("hello")}, [addedCategories, firstLoad])
 
@@ -51,12 +52,13 @@ function App(){
 			if(entry.id!=cid){tempCatArray.push(entry); counter++}
 			else{index=counter}
 		}
-
+		setFilterOut([...filterOut, cid])
 		decCatCount()
 		console.log("All categories before setting new array", addedCategories)
-		console.log("Removing the id: "+cid)
+		console.log("Removing the id: "+cid) 
 
 		setAddedCategories(tempCatArray)
+
 		console.log("All categories after setting new array", addedCategories)
 	}
 
@@ -95,7 +97,6 @@ function App(){
 		<div><button onClick={addNewCategory}>Add new Category</button></div>
 		
 		<div style={{width:"100%"}}>
-			{addedCategories.map((cat, indx)=>{console.log(cat)})}
     		{addedCategories.map((cat, indx)=>{
 			return <Category  title={cat.titleC} bgc={cat.bgcC} widthIn={catWidth} marginIn={marginWidth} catId={cat.id} 
 								 deleter={removeCat} retroMover={moveRetro} childFunc={cat.ref}/>

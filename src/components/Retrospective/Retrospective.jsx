@@ -1,7 +1,7 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import "./Retrospective.css"
 
-function App({titleR="place holder", bodyR="notes", bgcR="rgba(1,1,1,1)", id=0, currentCat=0, removeRetroR=null, retroShifter=null}){
+function App({titleR="place holder", bodyR="notes", bgcR="rgba(1,1,1,1)", id=0, currentCat=0, removeRetroR=null, retroShifter=null, like=0, dislike=0}){
 	const [text, setText]=useState(bodyR);
 	const [storageText, setStorageText]=useState("");
 	const [editing, setEditing]=useState('none');
@@ -10,8 +10,12 @@ function App({titleR="place holder", bodyR="notes", bgcR="rgba(1,1,1,1)", id=0, 
 	const [storageTextTitle, setStorageTextTitle]=useState("");
 	const [editingTitle, setEditingTitle]=useState('none');
 
-	const [likes, setLikes]=useState();
-	const [idp, setIdp]=useState(id)
+	const [likes, setLikes]=useState(like);
+	const [dislikes, setDislikes]=useState(dislike);
+	const [idp, setIdp]=useState(id);
+	const [newLine, setNewLine]=useState("\n")
+
+	
 
 	const editButton = e =>{
 		if(editing=='none'){
@@ -58,7 +62,8 @@ function App({titleR="place holder", bodyR="notes", bgcR="rgba(1,1,1,1)", id=0, 
 	}
 
 	const retroToObject = () =>{
-		return {titleR:titleText, bodyR:text, key:id, rid:id}
+
+		return {titleR:titleText, bodyR:text, key:id, rid:id, like:likes, dislike:dislikes}
 	}
 
 	const leftButtonHandler = () =>{
@@ -67,6 +72,16 @@ function App({titleR="place holder", bodyR="notes", bgcR="rgba(1,1,1,1)", id=0, 
 
 	const rightButtonHandler= () =>{
 		retroShifter(retroToObject(), true)
+	}
+
+	const likeButtonHandler = (e) =>{
+		if(e.ctrlKey){setLikes(likes+10)}
+		else{setLikes(likes+1)}
+	}
+
+	const dislikeButtonHandler = (e) =>{
+		if(e.ctrlKey){setDislikes(dislikes+10)}
+		else{setDislikes(dislikes+1)}
 	}
 
 	return <>
@@ -94,17 +109,38 @@ function App({titleR="place holder", bodyR="notes", bgcR="rgba(1,1,1,1)", id=0, 
 		</div>
 
 		<div className="FooterRetro">
-			<button className="ButtonOverride SendLeft">
-				<img className="Image" src="https://i.imgur.com/TPMNwcz.png" alt="my image" onClick={leftButtonHandler}/>
-			</button>
 
-			<button className="ButtonOverride DeleteButtonRetro">
-				<img className="Image" src="https://i.imgur.com/PFrUuVP.png" alt="my image" onClick={deleteButtonHandler}/>
-			</button>
-			
-			<button className="ButtonOverride SendRight">
-				<img className="Image" src="https://i.imgur.com/OkWyZrG.png" alt="my image" onClick={rightButtonHandler}/>
-			</button>
+			<div className="BarDiv">
+				<button className="ButtonOverride SendLeft">
+					<img className="Image" src="https://i.imgur.com/ENZXL0V.png" alt="like" onClick={likeButtonHandler}/>
+				</button>
+
+				<button className="SendMid">Importance: {likes-dislikes}
+				</button>
+
+				<button className="ButtonOverride SendRight">
+					<img className="Image" src="https://i.imgur.com/6pV2by9.png" alt="dislike" onClick={dislikeButtonHandler}/>
+				</button>
+			</div>
+		</div>
+
+		<div className="FooterRetro">
+
+
+			<div className="BarDiv">
+				<button className="ButtonOverride SendLeft">
+					<img className="Image" src="https://i.imgur.com/TPMNwcz.png" alt="left" onClick={leftButtonHandler}/>
+				</button>
+
+				<button className="ButtonOverride SendMid">
+					<img className="Image" src="https://i.imgur.com/PFrUuVP.png" alt="delete" onClick={deleteButtonHandler}/>
+				</button>
+				
+
+				<button className="ButtonOverride SendRight">
+					<img className="Image" src="https://i.imgur.com/OkWyZrG.png" alt="right" onClick={rightButtonHandler}/>
+				</button>
+			</div>
 		</div>
 	</div></>
 }

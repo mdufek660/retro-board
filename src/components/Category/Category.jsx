@@ -41,14 +41,19 @@ function App({title = "default", bgc="rgba(100,150,0,1)", column=0, widthIn="20%
 	const addExistingRetro=(input)=>{
 		let retrobgc=bgColor.replace(".5","1")
 		let retroid=Date.now()
-		let existingRetro={titleR: input.titleR, bodyR:input.bodyR, bgcR: retrobgc, rid: retroid, key: retroid, columnR:column, currentCat:catId}
+		console.log("input", input)
+		let existingRetro={titleR: input.titleR, bodyR:input.bodyR, bgcR: retrobgc, rid: retroid, key: retroid, 
+							columnR:column, currentCat:catId, like:input.like, dislike:input.dislike}
+							
+		console.log("retro", existingRetro)
 		setDivList([...divList, existingRetro])
 	}
 
 	const addNewRetro= e =>{
 		let retrobgc=bgColor.replace(".5","1")
 		let retroid=Date.now()
-		let newRetroEntry = {titleR: retroTitle, bodyR: "notes", bgcR: retrobgc, rid: retroid, key: retroid, columnR:column, currentCat:catId}
+		let newRetroEntry = {titleR: retroTitle, bodyR: "notes", bgcR: retrobgc, rid: retroid, key: retroid, 
+								columnR:column, currentCat:catId, like:0, dislike:0, imp:0}
 		setDivList([...divList, newRetroEntry])
 	}
 
@@ -114,7 +119,10 @@ function App({title = "default", bgc="rgba(100,150,0,1)", column=0, widthIn="20%
 		removeRetro(retroObject.rid)
 	}
 
-	const deleteButtonHandler = e =>{deleter(catId)}
+	const deleteButtonHandler = e =>{
+		
+		deleter(catId)
+	}
 
 	return <><div className="Container" style={{backgroundColor:bgColor, width:widthIn, margin:marginIn}}>
 
@@ -154,6 +162,7 @@ function App({title = "default", bgc="rgba(100,150,0,1)", column=0, widthIn="20%
 			return <Retrospective  titleR={retro.titleR} bgcR={retro.bgcR} id={retro.rid} key={retro.key} bodyR={retro.bodyR}  
 			currentCat={retro.catId} removeRetroR={removeRetro} retroShifter={retroShift}/>
 		})}</div> 
+		{/*map*/}
 	</div></>
 }
 

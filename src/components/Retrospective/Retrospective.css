@@ -63,7 +63,7 @@
 	float: left;
 }
 
-.DeleteButtonRetro{
+.SendMid{
 	float: center;
 }
 
@@ -75,4 +75,15 @@
 	width: 100%;
 	max-width: 100%;
 	overflow-wrap: break-word;
+}
+
+.BarDiv{
+	margin-left: 1px;
+	width: 100%;
+}
+
+.LikeTextBox{
+	float: center;
+	height: 100%;
+	margin: 0px;
 }
