@@ -99,7 +99,7 @@ function App(){
 		<div style={{width:"100%"}}>
     		{addedCategories.map((cat, indx)=>{
 			return <Category  title={cat.titleC} bgc={cat.bgcC} widthIn={catWidth} marginIn={marginWidth} catId={cat.id} 
-								 deleter={removeCat} retroMover={moveRetro} childFunc={cat.ref}/>
+								 deleter={removeCat} retroMover={moveRetro} childFunc={cat.ref} key={cat.id}/>
 			})}
 		</div>
 	</>
